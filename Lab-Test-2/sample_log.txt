@@ -1,0 +1,3 @@
+Support ticket: user1@example.com
+Invalid: user@@example.com
+Contact: admin@shop.com, helpdesk@shop.com
