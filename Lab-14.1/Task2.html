@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Online Store | Product Page</title>
+  <!-- AI-suggested Google Fonts for clean look -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F7F6FB;
+      --surface: #FFFFFF;
+      --primary: #3A86FF;
+      --secondary: #8338EC;
+      --accent: #FFBE0B;
+      --text: #232339;
+      --highlight: #E8DEF8;
+      --price-bg: #F0F3FF;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Outfit', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-page {
+      background: var(--surface);
+      border-radius: 20px;
+      box-shadow: 0 6px 24px #0001;
+      max-width: 400px;
+      width: 95%;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      margin: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* BEM Block: product-page */
+    }
+
+    .product-page__img {
+      width: 100%;
+      max-width: 290px;
+      border-radius: 14px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      /* BEM Element: product-page__img */
+      box-shadow: 0 4px 22px #3a86ff18;
+    }
+    .product-page__img:hover {
+      transform: scale(1.035) rotate(-2deg);
+      box-shadow: 0 8px 32px #8338ec20;
+    }
+
+    .product-page__title {
+      margin: 0 0 0.6rem 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.01em;
+      text-align: center;
+      /* BEM Element: product-page__title */
+    }
+
+    .product-page__price {
+      background: var(--price-bg);
+      color: var(--secondary);
+      padding: 0.5rem 1.2rem;
+      border-radius: 1em;
+      font-size: 1.13rem;
+      font-weight: 600;
+      margin-bottom: 1.3rem;
+      margin-top: -0.2rem;
+      letter-spacing: 0.01em;
+      /* BEM Element: product-page__price */
+      box-shadow: 0 2px 10px #3a86ff09;
+    }
+
+    .product-page__button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 2em;
+      font-size: 1.02rem;
+      font-weight: 700;
+      padding: 0.85rem 2.3rem;
+      cursor: pointer;
+      transition: background 0.16s, box-shadow 0.16s, transform 0.17s;
+      box-shadow: 0 2px 14px #3a86ff1c;
+      margin-top: 0.3rem;
+      /* BEM Element: product-page__button */
+      outline: none;
+    }
+    .product-page__button:focus-visible, .product-page__button:hover {
+      background: var(--secondary);
+      box-shadow: 0 5px 24px #ffbe0b40;
+      transform: translateY(-3px) scale(1.035);
+    }
+
+    /* Responsive layout */
+    @media (max-width: 600px) {
+      .product-page {
+        max-width: 98vw;
+        padding: 1rem 0.35rem 1rem 0.35rem;
+      }
+      .product-page__img {
+        max-width: 97vw;
+      }
+      .product-page__title {
+        font-size: 1.06rem;
+      }
+      .product-page__price {
+        font-size: 1rem;
+      }
+      .product-page__button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="product-page">
+      <img class="product-page__img" src="https://images.unsplash.com/photo-1513708922280-c9c5ce1b5afa?auto=format&fit=crop&w=500&q=80" alt="Wireless Headphones">
+      <h1 class="product-page__title">Wireless Noise-Cancelling Headphones</h1>
+      <div class="product-page__price">$129.99</div>
+      <button class="product-page__button" onclick="addToCartAlert()">Add to Cart</button>
+    </section>
+  </main>
+  <script>
+    // Show alert when "Add to Cart" is clicked
+    function addToCartAlert() {
+      alert('Product added to cart!');
+    }
+  </script>
+</body>
+</html>

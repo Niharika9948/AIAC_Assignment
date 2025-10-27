@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Niharika Anumala | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- AI-Suggested Color Palette and Typography -->
+  <style>
+    :root {
+      --primary: #6959ED;        /* AI: Soothing Purple */
+      --secondary: #FFA500;      /* AI: Vibrant Orange for highlights */
+      --bg-light: #F8F9FC; 
+      --bg-dark: #232946;
+      --text-main: #232946;
+      --text-light: #ffffff;
+      --accent: #5DFFB2;         /* AI: Fresh Mint Accent */
+      --card-bg: #fff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--bg-light);
+      color: var(--text-main);
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;   /* AI: Friendly, modern fonts */
+      margin: 0;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 1.5rem 0 1rem 0;
+      box-shadow: 0 4px 12px #0001;
+      text-align: center;
+    }
+    header .nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    header .nav a {
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 18px;
+      transition: background 0.2s, color 0.2s;
+      font-size: 1rem;
+    }
+    header .nav a:hover, header .nav a:focus {
+      background: var(--secondary);
+      color: var(--bg-dark);
+      outline: none;
+    }
+    main {
+      padding: 2.75rem 1rem 1rem 1rem;
+      max-width: 880px;
+      margin: auto;
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1fr;
+    }
+    section {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 2px 18px #23294613;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    section:target {
+      box-shadow: 0 6px 28px #6959ED28;
+    }
+    h1, h2 {
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    }
+    h1 {
+      margin-top: 0;
+      letter-spacing: 0.02em;
+      font-size: 2.2rem;
+      color: var(--accent);      /* AI: Use accent for extra visual interest */
+    }
+    h2 {
+      font-size: 1.35rem;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+    }
+    /* About Section Specifics */
+    .about-bio {
+      font-size: 1.06rem;
+      margin-bottom: 1rem;
+    }
+    .education-list, .skills-list {
+      margin: 0.5rem 0 0 1rem;
+      padding-left: 0;
+      list-style: disc;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      list-style: none;
+      margin-left: 0;
+      font-size: 1rem;
+    }
+    .skills-list li {
+      background: var(--accent);
+      color: #222;
+      padding: 0.33em 1em;
+      border-radius: 15px;
+      font-weight: 500;
+      letter-spacing: .01em;
+    }
+    /* Contact Section */
+    .contact-detail {
+      margin: 0.35em 0;
+      font-size: 1.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.65em;
+    }
+    .contact-detail svg {
+      width: 1.12em;
+      height: 1.12em;
+      vertical-align: middle;
+      fill: var(--secondary);
+    }
+
+    /* AI: Smooth transition for scroll-in effect */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(.26,.76,.47,.99), transform 0.5s cubic-bezier(.33,1.08,.46,1.04);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* AI: Responsive Layout */
+    @media (min-width: 700px) {
+        main {
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        #about {
+          grid-column: 1 / -1;
+        }
+        #contact {
+          grid-column: span 1;
+        }
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 1.2rem 0;
+      }
+      section {
+        padding: 1.1rem 0.75rem;
+      }
+      h1 { font-size: 1.33rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Niharika Anumala</h1>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About Me</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <!-- About Me Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-bio">
+        Hi! I'm Niharika Anumala, an aspiring developer passionate about technology and software development.
+        <br>
+        <br>
+        <strong>Education:</strong>
+        <ul class="education-list">
+          <li><strong>Schooling:</strong> Montessori &mdash; GPA 10</li>
+          <li><strong>Intermediate:</strong> SR Junior College &mdash; 98%</li>
+          <li><strong>B.Tech:</strong> SR University &mdash; CGPA 9.7</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>Python (Basics)</li>
+        <li>C (Basics)</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Node.js</li>
+        <li>Express</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-detail">
+        <!-- Phone SVG icon -->
+        <svg viewBox="0 0 20 20"><path d="M13 2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1a1 1 0 0 0-.98.8c-.15.7-.41 1.37-.78 2.01a1 1 0 0 0 .21 1.24l1.23 1.23a2 2 0 0 1 0 2.83l-1.41 1.41a2 2 0 0 1-2.83 0L10.76 16.1a1 1 0 0 0-1.24-.21 10.26 10.26 0 0 1-2.01.78A1 1 0 0 0 7 18H4a2 2 0 0 1-2-2V13a2 2 0 0 1 2-2h1a1 1 0 0 0 .98-.8c.15-.7.41-1.37.78-2.01a1 1 0 0 0-.21-1.24L4.32 7.72a2 2 0 0 1 0-2.83l1.41-1.41a2 2 0 0 1 2.83 0l1.23 1.23a1 1 0 0 0 1.24.21c.64-.37 1.31-.63 2.01-.78A1 1 0 0 0 13 2zm-3 9a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+        <span>
+          <a href="tel:8074341540" style="color:inherit; text-decoration: none;">8074341540</a>
+        </span>
+      </div>
+      <div class="contact-detail">
+        <!-- Email SVG icon -->
+        <svg viewBox="0 0 20 20"><path d="M2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.217l6 4.286 6-4.286V4H4zm12 12V7.383l-5.447 3.888a1 1 0 0 1-1.106 0L4 7.383V16h12z"/></svg>
+        <span>
+          <a href="mailto:anumalaniharikapatel4@gmail.com" style="color:inherit; text-decoration: none;">anumalaniharikapatel4@gmail.com</a>
+        </span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // AI: Smooth section reveal as you scroll (for enhanced UX)
+    function revealOnScroll() {
+      const sections = document.querySelectorAll('section');
+      const trigger = window.innerHeight * 0.92;
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < trigger) {
+          sec.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // AI: Smooth navigation scroll for fallback browsers
+    document.querySelectorAll('header .nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const hash = this.getAttribute('href');
+        if(hash.startsWith('#')) {
+          const target = document.querySelector(hash);
+          if(target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+            target.focus && target.focus();
+            target.classList.add('visible');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+<footer style="background: var(--primary); color: var(--text-light); text-align: center; padding: 2rem 0 1.3rem 0; margin-top: 2rem; border-radius: 1.1rem 1.1rem 0 0; box-shadow: 0 -3px 18px #0001;">
+  <div style="max-width: 580px; margin: auto;">
+    <h2 style="margin: 0 0 0.1em 0; letter-spacing: 0.03em; font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; font-weight: 700; font-size: 1.23rem;">
+      Let’s Connect & Create Something <span style="color: var(--accent);">Amazing!</span>
+    </h2>
+    <div style="margin: 0.6em 0 1.3em 0; font-size: 1.08em; opacity: 0.92;">
+      <span>Portfolio by</span> 
+      <span style="background: var(--accent); color:#232946; border-radius:13px; padding:0.15em 0.8em; margin: 0 0.08em;">Niharika Anumala</span>
+      <span style="margin-left:0.3em;">|</span>
+      <span style="margin-left:0.3em; font-style: italic; opacity: .80;">Driven by passion, code & creativity!</span>
+    </div>
+    <div style="margin:1.5em 0 0 0; font-size:1.6em;">
+      <a href="mailto:anumalaniharikapatel4@gmail.com" title="Mail Me" style="color: var(--accent); margin: 0 1.2em; vertical-align:middle; text-decoration:none;">
+        <svg style="width:1em; height:1em; fill:currentColor; vertical-align:middle;" viewBox="0 0 20 20"><path d="M2 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v.217l6 4.286 6-4.286V4H4zm12 12V7.383l-5.447 3.888a1 1 0 0 1-1.106 0L4 7.383V16h12z"/></svg>
+      </a>
+      <a href="tel:8074341540" title="Call Me" style="color: var(--accent); margin: 0 1.2em; vertical-align:middle; text-decoration:none;">
+        <svg style="width:1em; height:1em; fill:currentColor; vertical-align:middle;" viewBox="0 0 20 20"><path d="M13 2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1a1 1 0 0 0-.98.8c-.15.7-.41 1.37-.78 2.01a1 1 0 0 0 .21 1.24l1.23 1.23a2 2 0 0 1 0 2.83l-1.41 1.41a2 2 0 0 1-2.83 0L10.76 16.1a1 1 0 0 0-1.24-.21 10.26 10.26 0 0 1-2.01.78A1 1 0 0 0 7 18H4a2 2 0 0 1-2-2V13a2 2 0 0 1 2-2h1a1 1 0 0 0 .98-.8c.15-.7.41-1.37.78-2.01a1 1 0 0 0-.21-1.24L4.32 7.72a2 2 0 0 1 0-2.83l1.41-1.41a2 2 0 0 1 2.83 0l1.23 1.23a1 1 0 0 0 1.24.21c.64-.37 1.31-.63 2.01-.78A1 1 0 0 0 13 2zm-3 9a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+      </a>
+      <!-- Social links (add/remove as preferred) -->
+      <a href="https://www.linkedin.com/in/niharika-anumala/" target="_blank" rel="noopener" title="LinkedIn" style="color: var(--accent); margin:0 1.2em; vertical-align:middle; text-decoration:none;">
+        <svg style="width:1em; height:1em; fill:currentColor;" viewBox="0 0 24 24"><path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.292c-.966 0-1.75-.786-1.75-1.75s.784-1.75 1.75-1.75 1.75.786 1.75 1.75-.784 1.75-1.75 1.75zm15.5 10.292h-3v-4.5c0-1.177-.022-2.695-1.646-2.695-1.648 0-1.899 1.287-1.899 2.604v4.591h-3v-9h2.885v1.233h.041c.402-.76 1.387-1.561 2.855-1.561 3.053 0 3.616 2.01 3.616 4.623v4.705z"/></svg>
+      </a>
+      <a href="https://github.com/niharika-anumala" target="_blank" rel="noopener" title="GitHub" style="color: var(--accent); margin:0 1.2em; vertical-align:middle; text-decoration:none;">
+        <svg style="width:1em; height:1em; fill:currentColor;" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.415-4.033-1.415-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.107-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.381 1.236-3.221-.124-.304-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.958-.266 1.984-.399 3.003-.404 1.018.005 2.045.138 3.004.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.369.814 1.102.814 2.222v3.293c0 .322.218.694.824.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+    <div style="margin-top: 2.2em; font-size: .99em; opacity: .82; letter-spacing:0.013em;">
+      &copy; <span id="year"></span> Niharika Anumala. <span style="color:var(--accent);">All Rights Reserved.</span>
+    </div>
+  </div>
+</footer>
+<script>
+  // Auto-update year in copyright
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>

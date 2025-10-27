@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conference Event Registration</title>
+  <!-- AI-suggested Google Fonts for Professional Look -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3967ff;
+      --secondary: #233276;
+      --accent: #ffbe0b;
+      --bg: #f6f8fc;
+      --surface: #fff;
+      --error: #d90429;
+      --field-border: #c2dbff;
+    }
+    body {
+      font-family: 'Outfit', Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--secondary);
+      min-height: 100vh;
+    }
+    .registration-container {
+      max-width: 400px;
+      margin: 3rem auto 2rem auto;
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #3a86ff16;
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .registration-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    label {
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 0.32rem;
+      display: inline-block;
+      letter-spacing: 0.02em;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.18rem;
+      font-size: 1rem;
+      border-radius: 7px;
+      border: 1.3px solid var(--field-border);
+      background: #f5faff;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #f0f5ff;
+    }
+    .error-msg {
+      color: var(--error);
+      font-size: 0.97rem;
+      margin-top: 0.12rem;
+      display: none;
+      font-weight: 500;
+      aria-live: polite;
+    }
+    .success-msg {
+      color: var(--primary);
+      font-weight: 600;
+      text-align: center;
+      margin-top: 1.75rem;
+      font-size: 1.18rem;
+      display: none;
+    }
+    button[type=submit] {
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border: none;
+      padding: 0.82rem 0;
+      border-radius: 22px;
+      margin-top: 0.2rem;
+      cursor: pointer;
+      transition: background 0.18s, box-shadow 0.18s;
+      box-shadow: 0 2px 8px #3967ff21;
+    }
+    button[type=submit]:hover,
+    button[type=submit]:focus-visible {
+      background: var(--secondary);
+      outline: 2px solid var(--accent);
+    }
+    @media (max-width: 600px) {
+      .registration-container {
+        max-width: 97vw;
+        padding: 1.2rem 0.3rem;
+      }
+      h1 {
+        font-size: 1.33rem;
+      }
+    }
+    /* Accessibility - Focus visible for inputs */
+    input:focus-visible, select:focus-visible {
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="registration-container">
+      <h1>Event Registration</h1>
+      <form class="registration-form" aria-label="Conference registration form" autocomplete="off" novalidate>
+        <div>
+          <label for="name">Full Name <span aria-hidden="true" style="color: var(--error);">*</span></label>
+          <input type="text" name="name" id="name" required aria-required="true" autocomplete="name" aria-describedby="name-err" />
+          <div id="name-err" class="error-msg" role="alert"></div>
+        </div>
+        <div>
+          <label for="email">Email <span aria-hidden="true" style="color: var(--error);">*</span></label>
+          <input type="email" name="email" id="email" required aria-required="true" autocomplete="email" aria-describedby="email-err"/>
+          <div id="email-err" class="error-msg" role="alert"></div>
+        </div>
+        <div>
+          <label for="phone">Phone Number <span aria-hidden="true" style="color: var(--error);">*</span></label>
+          <input type="tel" name="phone" id="phone" required aria-required="true" pattern="^\d{10}$" inputmode="numeric" autocomplete="tel" aria-describedby="phone-err" placeholder="e.g. 9876543210"/>
+          <div id="phone-err" class="error-msg" role="alert"></div>
+        </div>
+        <div>
+          <label for="session">Session Selection <span aria-hidden="true" style="color: var(--error);">*</span></label>
+          <select name="session" id="session" required aria-required="true" aria-describedby="session-err">
+            <option value="">-- Please choose --</option>
+            <option value="ai">AI & Machine Learning</option>
+            <option value="web">Modern Web Development</option>
+            <option value="iot">IoT & Embedded Systems</option>
+            <option value="cloud">Cloud Computing</option>
+          </select>
+          <div id="session-err" class="error-msg" role="alert"></div>
+        </div>
+        <button type="submit" aria-label="Submit registration form">Register</button>
+        <div class="success-msg" id="success-msg" aria-live="polite"></div>
+      </form>
+    </div>
+  </main>
+  <script>
+    // AI-generated form validation logic
+    const form = document.querySelector('.registration-form');
+    const errorFields = {
+      name: document.getElementById('name-err'),
+      email: document.getElementById('email-err'),
+      phone: document.getElementById('phone-err'),
+      session: document.getElementById('session-err')
+    };
+    const successMsg = document.getElementById('success-msg');
+
+    function showError(field, msg) {
+      errorFields[field].innerText = msg;
+      errorFields[field].style.display = 'block';
+    }
+    function clearErrors() {
+      for (const key in errorFields) {
+        errorFields[key].innerText = '';
+        errorFields[key].style.display = 'none';
+      }
+    }
+
+    function validateEmail(email) {
+      // Simple but effective regex
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    function validatePhone(phone) {
+      return /^\d{10}$/.test(phone.replace(/\s+/g, ''));
+    }
+
+    function validateForm() {
+      clearErrors();
+      let valid = true;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+      const session = form.session.value;
+
+      if (!name) {
+        showError('name', 'Please enter your name.');
+        valid = false;
+      }
+      if (!email) {
+        showError('email', 'Please enter your email.');
+        valid = false;
+      } else if (!validateEmail(email)) {
+        showError('email', 'Enter a valid email address.');
+        valid = false;
+      }
+      if (!phone) {
+        showError('phone', 'Please enter your phone number.');
+        valid = false;
+      } else if (!validatePhone(phone)) {
+        showError('phone', 'Phone must be 10 digits (numbers only).');
+        valid = false;
+      }
+      if (!session) {
+        showError('session', 'Please select a session.');
+        valid = false;
+      }
+      return valid;
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      successMsg.style.display = 'none';
+
+      if (validateForm()) {
+        form.reset();
+        successMsg.innerText = "Thank you for registering! We look forward to seeing you at the conference.";
+        successMsg.style.display = 'block';
+        // Optionally, form could be hidden here for clean UX:
+        // form.style.display = 'none';
+      }
+    });
+
+    // Accessibility: error messaging per-field as user leaves the field
+    form.name.addEventListener('blur', () => {
+      if (!form.name.value.trim()) {
+        showError('name', 'Please enter your name.');
+      } else {
+        errorFields.name.innerText = '';
+        errorFields.name.style.display = 'none';
+      }
+    });
+    form.email.addEventListener('blur', () => {
+      if (!form.email.value.trim()) {
+        showError('email', 'Please enter your email.');
+      } else if (!validateEmail(form.email.value.trim())) {
+        showError('email', 'Enter a valid email address.');
+      } else {
+        errorFields.email.innerText = '';
+        errorFields.email.style.display = 'none';
+      }
+    });
+    form.phone.addEventListener('blur', () => {
+      if (!form.phone.value.trim()) {
+        showError('phone', 'Please enter your phone number.');
+      } else if (!validatePhone(form.phone.value.trim())) {
+        showError('phone', 'Phone must be 10 digits (numbers only).');
+      } else {
+        errorFields.phone.innerText = '';
+        errorFields.phone.style.display = 'none';
+      }
+    });
+    form.session.addEventListener('change', () => {
+      if (!form.session.value) {
+        showError('session', 'Please select a session.');
+      } else {
+        errorFields.session.innerText = '';
+        errorFields.session.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

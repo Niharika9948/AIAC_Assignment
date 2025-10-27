@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch API List Rendering Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f6fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 470px;
+      margin: 3.5rem auto 2.2rem auto;
+      background: #fff;
+      border-radius: 1em;
+      box-shadow: 0 6px 30px #0001, 0 1.5px 4px #0001;
+      padding: 2rem 1.5rem 2rem 1.5rem;
+    }
+    h1 {
+      margin: 0 0 1.5em 0;
+      font-weight: 800;
+      font-size: 1.33rem;
+      letter-spacing: 0.01em;
+      color: #3c3c56;
+    }
+    .loading,
+    .error {
+      text-align: center;
+      font-size: 1.09em;
+      opacity: 0.85;
+    }
+    .skeleton {
+      background: linear-gradient(90deg,#ececec 25%, #e1e7ec 43%, #ececec 70%);
+      border-radius: 0.6em;
+      margin-bottom: 1.15em;
+      min-height: 2.2em;
+      width: 100%;
+      animation: shimmer 1.18s infinite linear;
+    }
+    @keyframes shimmer {
+      0% { background-position: -350px 0; }
+      100% { background-position: 350px 0; }
+    }
+    ul.item-list {
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+    ul.item-list li {
+      background: #f6f8fa;
+      margin-bottom: 0.93em;
+      border-radius: 0.5em;
+      box-shadow: 0 1.5px 7px #2222;
+      padding: 1em 1.3em 1em 1.1em;
+      font-size: 1.05em;
+      font-weight: 500;
+      transition: box-shadow .2s;
+    }
+    ul.item-list li:hover {
+      box-shadow: 0 6px 24px #7448fa20;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>User List (via Fetch API)</h1>
+    <div id="list-root">
+      <div class="loading">Loading users...</div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </div>
+  </div>
+  <script>
+    // Immediately run when DOM loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      const root = document.getElementById('list-root');
+      // Helper to safely create element with text
+      function createSafeListItem(name, email) {
+        const li = document.createElement('li');
+        li.textContent = name + ' ';
+        if (email) {
+          const span = document.createElement('span');
+          span.style.opacity = '0.7';
+          span.style.fontSize = '0.96em';
+          span.style.marginLeft = '0.6em';
+          span.textContent = `<${email}>`;
+          li.appendChild(span);
+        }
+        return li;
+      }
+
+      // Show skeleton loading state
+      function showLoading() {
+        root.innerHTML = '';
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'loading';
+        loadingDiv.textContent = 'Loading users...';
+        root.appendChild(loadingDiv);
+        // Skeleton UI
+        for (let i = 0; i < 3; ++i) {
+          const skeleton = document.createElement('div');
+          skeleton.className = 'skeleton';
+          root.appendChild(skeleton);
+        }
+      }
+
+      // Show error message
+      function showError(message) {
+        root.innerHTML = '';
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error';
+        errorDiv.textContent = 'Error: ' + message;
+        root.appendChild(errorDiv);
+      }
+
+      // Render user list to DOM
+      function renderList(users) {
+        root.innerHTML = '';
+        if (!users || !Array.isArray(users) || users.length === 0) {
+          showError('No users found.');
+          return;
+        }
+        const ul = document.createElement('ul');
+        ul.className = 'item-list';
+        users.forEach(function(user) {
+          ul.appendChild(createSafeListItem(user.name, user.email));
+        });
+        root.appendChild(ul);
+      }
+
+      // Fetch from JSONPlaceholder demo API
+      function fetchUsersAndRender() {
+        showLoading();
+        fetch('https://jsonplaceholder.typicode.com/users')
+          .then(function(response) {
+            if (!response.ok) throw new Error('Network error: ' + response.status);
+            return response.json();
+          })
+          .then(renderList)
+          .catch(function(err) {
+            showError(err.message || 'Unknown error.');
+          });
+      }
+      fetchUsersAndRender();
+    });
+  </script>
+</body>
+</html>
