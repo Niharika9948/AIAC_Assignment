@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <style>
+        /* Reset & base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #0077b6, #00b4d8);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        nav a {
+            margin-left: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #caf0f8;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+        section.container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* About */
+        #about {
+            text-align: center;
+            background: linear-gradient(135deg, #90e0ef, #48cae4);
+            color: white;
+            padding: 100px 20px;
+            border-radius: 15px;
+        }
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        #about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Skills Cards */
+        #skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .skill-card {
+            background: white;
+            color: #0077b6;
+            padding: 20px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Projects */
+        #projects h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0077b6;
+        }
+        #projects .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .project {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .project h3 {
+            margin-bottom: 10px;
+            color: #0077b6;
+        }
+        .project p {
+            font-size: 0.95rem;
+        }
+
+        /* Contact */
+        #contact h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0077b6;
+        }
+        #contact form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        #contact input, 
+        #contact textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        #contact button {
+            background: #0077b6;
+            color: white;
+            padding: 12px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #contact button:hover {
+            background: #023e8a;
+        }
+
+        /* Footer */
+        footer {
+            background: #023e8a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav a {
+                margin-left: 10px;
+            }
+            #skills {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hello! I'm a passionate developer who loves creating beautiful and functional web applications. I focus on modern design, responsive layouts, and seamless user experiences.</p>
+
+            <!-- Skills -->
+            <div id="skills">
+                <div class="skill-card">HTML</div>
+                <div class="skill-card">CSS</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">Python</div>
+                <div class="skill-card">React.js</div>
+                <div class="skill-card">Node.js</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <h3>Portfolio Website</h3>
+                    <p>A fully responsive personal portfolio website built with HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="project">
+                    <h3>Task Manager App</h3>
+                    <p>A Python Flask application to manage daily tasks with CRUD operations.</p>
+                </div>
+                <div class="project">
+                    <h3>React E-commerce</h3>
+                    <p>A modern React.js e-commerce project with product filtering and shopping cart.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple form submission alert
+        document.getElementById('contactForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            alert("Thank you! Your message has been sent.");
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
